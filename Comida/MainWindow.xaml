@@ -6,12 +6,21 @@
         xmlns:local="clr-namespace:Comida"
         mc:Ignorable="d"
         Title="Comida" Height="700" Width="950" MinHeight="500" MinWidth="650" Icon="assets/fruit_food_apple.ico">
+    <Window.Resources>
+        <DataTemplate x:Key="PlantillaComida">
+            <StackPanel>
+                <TextBlock Text="{Binding Nombre}"></TextBlock>
+                <Image Width="100" Source="{Binding Imagen}"></Image>
+                
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid Background="LightBlue">
         <Border Background="White" BorderThickness="1" BorderBrush="Black" Margin="10">
             <DockPanel LastChildFill="False">
-                <WrapPanel DockPanel.Dock="Left" Margin="10">
-                    <Image Source="assets/burguer.jpg" Width="300"></Image>
-
+                <WrapPanel DockPanel.Dock="Left" Margin="10" >
+                    <ListBox ItemTemplate="{StaticResource PlantillaComida}" ItemsSource="{Binding Path=Platos}"></ListBox>
                 </WrapPanel>
                 <StackPanel DockPanel.Dock="Right" Width="280" Margin="10" Background="LightGray">
                     <TextBlock Margin="10,10,10,0">Nombre del plato</TextBlock>

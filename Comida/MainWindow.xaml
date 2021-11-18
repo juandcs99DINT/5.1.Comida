@@ -7,42 +7,148 @@
         mc:Ignorable="d"
         Title="Comida" Height="700" Width="950" MinHeight="500" MinWidth="650" Icon="assets/fruit_food_apple.ico">
     <Window.Resources>
-        <DataTemplate x:Key="PlantillaComida">
-            <StackPanel>
-                <TextBlock Text="{Binding Nombre}"></TextBlock>
-                <Image Width="100" Source="{Binding Imagen}"></Image>
-                
-            </StackPanel>
+        <Style TargetType="{x:Type Image}" x:Key="BanderaImage">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Tipo}" Value="Americana">
+                    <Setter Property="Source" Value="assets/united_states.png"></Setter>
+                    <Setter Property="ToolTip" Value="Comida americana"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tipo}" Value="Mexicana">
+                    <Setter Property="Source" Value="assets/mexico.png"></Setter>
+                    <Setter Property="ToolTip" Value="Comida mexicana"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tipo}" Value="China">
+                    <Setter Property="Source" Value="assets/china.png"></Setter>
+                    <Setter Property="ToolTip" Value="Comida china"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TituloPlatoTextBlock">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Tipo}" Value="Americana">
+                    <Setter Property="FontFamily" Value="Slim Summer"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tipo}" Value="China">
+                    <Setter Property="FontFamily" Value="Chinese Wok Food St"></Setter>
+                    
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tipo}" Value="Mexicana">
+                    <Setter Property="FontFamily" Value="Taco Salad"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="EstiloGenericoAlergenos">
+            <Setter Property="Width" Value="25"></Setter>
+            <Setter Property="Visibility" Value="Collapsed"></Setter>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="ImagenGluten" BasedOn="{StaticResource EstiloGenericoAlergenos}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Gluten}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"></Setter>
+                    <Setter Property="ToolTip" Value="Gluten"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="ImagenLeche" BasedOn="{StaticResource EstiloGenericoAlergenos}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Leche}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"></Setter>
+                    <Setter Property="ToolTip" Value="Leche"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="ImagenSoja" BasedOn="{StaticResource EstiloGenericoAlergenos}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Soja}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"></Setter>
+                    <Setter Property="ToolTip" Value="Soja"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="ImagenSulfito" BasedOn="{StaticResource EstiloGenericoAlergenos}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Sulfitos}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"></Setter>
+                    <Setter Property="ToolTip" Value="Sulfatos"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="{x:Type Border}" x:Key="BordeGenerico">
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+        <Style TargetType="{x:Type Border}" x:Key="BordeTarjeta" BasedOn="{StaticResource BordeGenerico}">
+            <Setter Property="Background" Value="AliceBlue"></Setter>
+            <Setter Property="Width" Value="250"></Setter>
+            <Setter Property="Height" Value="300"></Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect></DropShadowEffect>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="10,0,10,10"></Setter>
+        </Style>
+        <DataTemplate x:Key="PlatosTemplate">
+            <Border Style="{StaticResource BordeTarjeta}">
+                <StackPanel>
+                    <Viewbox Height="100" Margin="0,-15,0,0">
+                        <TextBlock Style="{StaticResource TituloPlatoTextBlock}" Text="{Binding Nombre}"></TextBlock>
+                    </Viewbox>
+                    <Image Stretch="UniformToFill" Width="210" Height="180" Margin="15,-15,15,10" Source="{Binding Imagen}"></Image>
+                    <DockPanel LastChildFill="False" Margin="15,0,15,5">
+                        <Image Width="35" Height="35" Style="{StaticResource BanderaImage}"></Image>
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                            <Image Source="assets/gluten.png" Style="{StaticResource ImagenGluten}"></Image>
+                            <Image Source="assets/milk.png" Style="{StaticResource ImagenLeche}"></Image>
+                            <Image Source="assets/soybean.png" Style="{StaticResource ImagenSoja}"></Image>
+                            <Image Source="assets/sulfide.png" Style="{StaticResource ImagenSulfito}"></Image>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
         </DataTemplate>
     </Window.Resources>
 
-    <Grid Background="LightBlue">
-        <Border Background="White" BorderThickness="1" BorderBrush="Black" Margin="10">
-            <DockPanel LastChildFill="False">
-                <WrapPanel DockPanel.Dock="Left" Margin="10" >
-                    <ListBox ItemTemplate="{StaticResource PlantillaComida}" ItemsSource="{Binding Path=Platos}"></ListBox>
-                </WrapPanel>
-                <StackPanel DockPanel.Dock="Right" Width="280" Margin="10" Background="LightGray">
+    <Grid Background="CadetBlue">
+        <Border Background="White" Style="{StaticResource BordeGenerico}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="280"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListBox ItemTemplate="{StaticResource PlatosTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" ItemsSource="{Binding Path=Platos}" SelectedItem="{Binding Path=PlatoSeleccionado}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal">
+                            </WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+                <StackPanel Grid.Column="1" Margin="10" Background="LightGray">
                     <TextBlock Margin="10,10,10,0">Nombre del plato</TextBlock>
-                    <TextBox Margin="10,0,10,10"></TextBox>
+                    <TextBox Text="{Binding Path=PlatoSeleccionado.Nombre, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                     <TextBlock Margin="10,0,10,0">Foto del plato</TextBlock>
-                    <TextBox Margin="10,0,10,10"></TextBox>
-                    <ComboBox Margin="10,0,10,10">
-                        <ComboBoxItem>Americana</ComboBoxItem>
-                        <ComboBoxItem>China</ComboBoxItem>
-                        <ComboBoxItem>Mexicana</ComboBoxItem>
-                    </ComboBox>
+                    <TextBox Text="{Binding Path=PlatoSeleccionado.Imagen, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <ComboBox Margin="10,0,10,10" ItemsSource="{Binding Path=Tipos}" SelectedValue="{Binding Path=PlatoSeleccionado.Tipo}"></ComboBox>
                     <GroupBox Margin="10,0,10,10" Header="Alérgenos" BorderBrush="Black">
                         <UniformGrid>
-                            <CheckBox VerticalAlignment="Center" IsChecked="True" Margin="5">Leche</CheckBox>
-                            <CheckBox VerticalAlignment="Center" Margin="5" Grid.Column="1">Soja</CheckBox>
-                            <CheckBox VerticalAlignment="Center" Margin="5" Grid.Row="1">Gluten</CheckBox>
-                            <CheckBox VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="1">Sulfitos</CheckBox>
+                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Leche}">Leche</CheckBox>
+                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Soja}" Grid.Column="1">Soja</CheckBox>
+                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Gluten}" Grid.Row="1">Gluten</CheckBox>
+                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Sulfitos}" Grid.Row="1" Grid.Column="1">Sulfitos</CheckBox>
                         </UniformGrid>
                     </GroupBox>
                     <Button IsEnabled="False" Margin="10,0,10,10" Width="130" HorizontalAlignment="Left">Limpiar selección</Button>
                 </StackPanel>
-            </DockPanel>
+            </Grid>
         </Border>
     </Grid>
 </Window>

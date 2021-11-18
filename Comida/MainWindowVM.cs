@@ -14,7 +14,8 @@ namespace Comida
 
         public MainWindowVM()
         {
-            platos = Plato.GetSamples(@"C:\Users\alumno\Documents\VisualStudioProyectos\Tema 5\Comida\Comida\assets");
+            platos = Plato.GetSamples(@"C:\Users\Juandi\Documents\VisualStudioProyectos\Tema 5\Comida\Comida\assets");
+            tipos = new string[] { "China", "Americana", "Mexicana" };
         }
 
         public ObservableCollection<Plato> Platos
@@ -24,6 +25,17 @@ namespace Comida
             {
                 platos = value;
                 NotifyPropertyChanged("Platos");
+            }
+        }
+
+        private string[] tipos;
+        public string[] Tipos
+        {
+            get { return tipos; }
+            set
+            {
+                tipos = value;
+                NotifyPropertyChanged("Tipos");
             }
         }
 

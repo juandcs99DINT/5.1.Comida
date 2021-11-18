@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 
 namespace Comida
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowVM vm = new MainWindowVM();
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = vm;
         }
     }
 }

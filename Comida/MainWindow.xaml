@@ -108,8 +108,8 @@
                         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
                             <Image Source="assets/gluten.png" Style="{StaticResource ImagenGluten}"></Image>
                             <Image Source="assets/milk.png" Style="{StaticResource ImagenLeche}"></Image>
-                            <Image Source="assets/soybean.png" Style="{StaticResource ImagenSoja}"></Image>
                             <Image Source="assets/sulfide.png" Style="{StaticResource ImagenSulfito}"></Image>
+                            <Image Source="assets/soybean.png" Style="{StaticResource ImagenSoja}"></Image>
                         </StackPanel>
                     </DockPanel>
                 </StackPanel>

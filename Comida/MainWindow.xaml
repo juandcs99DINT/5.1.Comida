@@ -1,0 +1,39 @@
+﻿<Window x:Class="Comida.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Comida"
+        mc:Ignorable="d"
+        Title="Comida" Height="700" Width="950" MinHeight="500" MinWidth="650" Icon="assets/fruit_food_apple.ico">
+    <Grid Background="LightBlue">
+        <Border Background="White" BorderThickness="1" BorderBrush="Black" Margin="10">
+            <DockPanel LastChildFill="False">
+                <WrapPanel DockPanel.Dock="Left" Margin="10">
+                    <Image Source="assets/burguer.jpg" Width="300"></Image>
+
+                </WrapPanel>
+                <StackPanel DockPanel.Dock="Right" Width="280" Margin="10" Background="LightGray">
+                    <TextBlock Margin="10,10,10,0">Nombre del plato</TextBlock>
+                    <TextBox Margin="10,0,10,10"></TextBox>
+                    <TextBlock Margin="10,0,10,0">Foto del plato</TextBlock>
+                    <TextBox Margin="10,0,10,10"></TextBox>
+                    <ComboBox Margin="10,0,10,10">
+                        <ComboBoxItem>Americana</ComboBoxItem>
+                        <ComboBoxItem>China</ComboBoxItem>
+                        <ComboBoxItem>Mexicana</ComboBoxItem>
+                    </ComboBox>
+                    <GroupBox Margin="10,0,10,10" Header="Alérgenos" BorderBrush="Black">
+                        <UniformGrid>
+                            <CheckBox VerticalAlignment="Center" IsChecked="True" Margin="5">Leche</CheckBox>
+                            <CheckBox VerticalAlignment="Center" Margin="5" Grid.Column="1">Soja</CheckBox>
+                            <CheckBox VerticalAlignment="Center" Margin="5" Grid.Row="1">Gluten</CheckBox>
+                            <CheckBox VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="1">Sulfitos</CheckBox>
+                        </UniformGrid>
+                    </GroupBox>
+                    <Button IsEnabled="False" Margin="10,0,10,10" Width="130" HorizontalAlignment="Left">Limpiar selección</Button>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

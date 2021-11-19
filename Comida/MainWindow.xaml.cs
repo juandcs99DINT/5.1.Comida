@@ -17,11 +17,14 @@ namespace Comida
 {
     public partial class MainWindow : Window
     {
-        private MainWindowVM vm = new MainWindowVM();
+        private readonly MainWindowVM vm = new MainWindowVM();
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = vm;
         }
+
+        private void LimpiarSeleccionButton_Click(object sender, RoutedEventArgs e) => ListBoxPlatos.SelectedIndex = -1;
+        
     }
 }

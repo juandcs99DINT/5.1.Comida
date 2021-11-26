@@ -54,10 +54,8 @@ namespace Comida
             }
         }
 
-        public void DeseleccionarPlatos()
-        {
-            PlatoSeleccionado = null;
-        }
+        public void DeseleccionarPlatos() => PlatoSeleccionado = null;
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propertyName)

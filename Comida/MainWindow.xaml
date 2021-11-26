@@ -77,12 +77,16 @@
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="SkyBlue"></Setter>
+            <Setter Property="BorderThickness" Value="10"></Setter>
+        </Style>
         <Style TargetType="{x:Type Border}" x:Key="BordeGenerico">
             <Setter Property="BorderBrush" Value="Black"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
-            <Setter Property="Margin" Value="10"></Setter>
         </Style>
         <Style TargetType="{x:Type Border}" x:Key="BordeTarjeta" BasedOn="{StaticResource BordeGenerico}">
+            <Setter Property="Margin" Value="10"></Setter>
             <Setter Property="Background" Value="AliceBlue"></Setter>
             <Setter Property="Width" Value="250"></Setter>
             <Setter Property="Height" Value="300"></Setter>
@@ -133,38 +137,38 @@
         </Style>
     </Window.Resources>
 
-    <Grid Background="SkyBlue">
-        <Border Background="White" Style="{StaticResource BordeGenerico}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="280"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListBox x:Name="ListBoxPlatos" ItemTemplate="{StaticResource PlatosTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" ItemsSource="{Binding Path=Platos}" SelectedItem="{Binding Path=PlatoSeleccionado}">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal">
-                            </WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
-                <StackPanel Style="{StaticResource FormularioStackPanel}" Grid.Column="1">
-                    <TextBlock Margin="10,10,10,0">Nombre del plato</TextBlock>
-                    <TextBox x:Name="NombrePlatoTextBox" Text="{Binding Path=PlatoSeleccionado.Nombre, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    <TextBlock Margin="10,0,10,0">Foto del plato</TextBlock>
-                    <TextBox x:Name="FotoPlatoTextBox" Text="{Binding Path=PlatoSeleccionado.Imagen, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    <ComboBox x:Name="TipoComboBox" Margin="10,0,10,10" ItemsSource="{Binding Path=Tipos}" SelectedItem="{Binding Path=PlatoSeleccionado.Tipo}"></ComboBox>
-                    <GroupBox x:Name="AlergenosGroupBox" Margin="10,0,10,10" Header="Alérgenos" BorderBrush="Black">
-                        <UniformGrid>
-                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Leche}">Leche</CheckBox>
-                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Soja}">Soja</CheckBox>
-                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Gluten}">Gluten</CheckBox>
-                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Sulfitos}">Sulfitos</CheckBox>
-                        </UniformGrid>
-                    </GroupBox>
-                    <Button x:Name="LimpiarSeleccionButton" Style="{StaticResource LimpiarSeleccionButton}">Limpiar selección</Button>
-                </StackPanel>
-            </Grid>
+    <Border>
+        <Border Style="{StaticResource BordeGenerico}">
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="280"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="ListBoxPlatos" ItemTemplate="{StaticResource PlatosTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" ItemsSource="{Binding Path=Platos}" SelectedItem="{Binding Path=PlatoSeleccionado}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <StackPanel Style="{StaticResource FormularioStackPanel}" Grid.Column="1">
+                <TextBlock Margin="10,10,10,0">Nombre del plato</TextBlock>
+                <TextBox x:Name="NombrePlatoTextBox" Text="{Binding Path=PlatoSeleccionado.Nombre, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBlock Margin="10,0,10,0">Foto del plato</TextBlock>
+                <TextBox x:Name="FotoPlatoTextBox" Text="{Binding Path=PlatoSeleccionado.Imagen, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <ComboBox x:Name="TipoComboBox" Margin="10,0,10,10" ItemsSource="{Binding Path=Tipos}" SelectedItem="{Binding Path=PlatoSeleccionado.Tipo}"></ComboBox>
+                <GroupBox x:Name="AlergenosGroupBox" Margin="10,0,10,10" Header="Alérgenos" BorderBrush="Black">
+                    <UniformGrid>
+                        <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Leche}">Leche</CheckBox>
+                        <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Soja}">Soja</CheckBox>
+                        <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Gluten}">Gluten</CheckBox>
+                        <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Sulfitos}">Sulfitos</CheckBox>
+                    </UniformGrid>
+                </GroupBox>
+                <Button x:Name="LimpiarSeleccionButton" Style="{StaticResource LimpiarSeleccionButton}">Limpiar selección</Button>
+            </StackPanel>
+        </Grid>
         </Border>
-    </Grid>
+    </Border>
 </Window>

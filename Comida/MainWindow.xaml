@@ -158,7 +158,7 @@
                     <TextBlock Margin="10,0,10,0">Foto del plato</TextBlock>
                     <TextBox x:Name="FotoPlatoTextBox" Text="{Binding Path=PlatoSeleccionado.Imagen, UpdateSourceTrigger=PropertyChanged}" Template="{DynamicResource TextBoxControlTemplate}"></TextBox>
                     <ComboBox x:Name="TipoComboBox" Margin="10,0,10,10" ItemsSource="{Binding Path=Tipos}" SelectedItem="{Binding Path=PlatoSeleccionado.Tipo}"></ComboBox>
-                    <GroupBox x:Name="AlergenosGroupBox" Margin="10,0,10,10" Header="Alérgenos" BorderBrush="Black" Template="{DynamicResource GroupBoxControlTemplate}">
+                    <GroupBox x:Name="AlergenosGroupBox" Margin="10,0,10,10" Header="Alérgenos" BorderBrush="Black" Template="{DynamicResource GroupBoxControlTemplate}" >
                         <UniformGrid>
                             <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Leche}" Template="{DynamicResource CheckBoxControlTemplate}">Leche</CheckBox>
                             <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Soja}" Template="{DynamicResource CheckBoxControlTemplate}">Soja</CheckBox>

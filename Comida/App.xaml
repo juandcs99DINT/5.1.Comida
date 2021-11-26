@@ -25,7 +25,7 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        
+
         <ControlTemplate x:Key="GroupBoxControlTemplate" TargetType="{x:Type GroupBox}">
             <Grid SnapsToDevicePixels="True">
                 <Grid.ColumnDefinitions>
@@ -41,7 +41,7 @@
                     <RowDefinition Height="6"/>
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="4" Grid.Column="0" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3"/>
-                <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3">
+                <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="4" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3">
                     <Border.OpacityMask>
                         <MultiBinding ConverterParameter="7" UpdateSourceTrigger="Default">
                             <MultiBinding.Converter>
@@ -53,6 +53,7 @@
                         </MultiBinding>
                     </Border.OpacityMask>
                     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2"/>
                     </Border>
                 </Border>
                 <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Grid.Row="0" Grid.RowSpan="2">
@@ -61,7 +62,7 @@
                 <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="1" ContentStringFormat="{TemplateBinding ContentStringFormat}" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
             </Grid>
         </ControlTemplate>
-        
+
         <ControlTemplate x:Key="CheckBoxControlTemplate" TargetType="{x:Type CheckBox}">
             <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
                 <Grid.ColumnDefinitions>
@@ -119,7 +120,7 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        
+
         <ControlTemplate x:Key="ButtonControlTemplate" TargetType="{x:Type Button}">
             <Border CornerRadius="5" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -147,7 +148,5 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-
-
     </Application.Resources>
 </Application>

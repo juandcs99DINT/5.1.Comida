@@ -24,7 +24,6 @@ namespace Comida
             this.DataContext = vm;
         }
 
-        private void LimpiarSeleccionButton_Click(object sender, RoutedEventArgs e) => ListBoxPlatos.SelectedIndex = -1;
-        
+        private void LimpiarSeleccionButton_Click(object sender, RoutedEventArgs e) => vm.DeseleccionarPlatos();
     }
 }

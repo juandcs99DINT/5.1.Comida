@@ -31,7 +31,6 @@
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Tipo}" Value="China">
                     <Setter Property="FontFamily" Value="Chinese Wok Food St"></Setter>
-
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Tipo}" Value="Mexicana">
                     <Setter Property="FontFamily" Value="Taco Salad"></Setter>
@@ -120,7 +119,7 @@
             <Setter Property="Background" Value="LightGray"></Setter>
             <Setter Property="IsEnabled" Value="True"></Setter>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding ElementName=ListBoxPlatos, Path=SelectedIndex}" Value="-1">
+                <DataTrigger Binding="{Binding Path=PlatoSeleccionado}" Value="{x:Null}">
                     <Setter Property="IsEnabled" Value="False"></Setter>
                 </DataTrigger>
             </Style.Triggers>
@@ -154,13 +153,13 @@
                     <TextBox x:Name="NombrePlatoTextBox" Text="{Binding Path=PlatoSeleccionado.Nombre, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                     <TextBlock Margin="10,0,10,0">Foto del plato</TextBlock>
                     <TextBox x:Name="FotoPlatoTextBox" Text="{Binding Path=PlatoSeleccionado.Imagen, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    <ComboBox x:Name="TipoComboBox" Margin="10,0,10,10" ItemsSource="{Binding Path=Tipos}" SelectedValue="{Binding Path=PlatoSeleccionado.Tipo}"></ComboBox>
+                    <ComboBox x:Name="TipoComboBox" Margin="10,0,10,10" ItemsSource="{Binding Path=Tipos}" SelectedItem="{Binding Path=PlatoSeleccionado.Tipo}"></ComboBox>
                     <GroupBox x:Name="AlergenosGroupBox" Margin="10,0,10,10" Header="Alérgenos" BorderBrush="Black">
                         <UniformGrid>
                             <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Leche}">Leche</CheckBox>
-                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Soja}" Grid.Column="1">Soja</CheckBox>
-                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Gluten}" Grid.Row="1">Gluten</CheckBox>
-                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Sulfitos}" Grid.Row="1" Grid.Column="1">Sulfitos</CheckBox>
+                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Soja}">Soja</CheckBox>
+                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Gluten}">Gluten</CheckBox>
+                            <CheckBox IsChecked="{Binding Path=PlatoSeleccionado.Sulfitos}">Sulfitos</CheckBox>
                         </UniformGrid>
                     </GroupBox>
                     <Button x:Name="LimpiarSeleccionButton" Style="{StaticResource LimpiarSeleccionButton}">Limpiar selección</Button>

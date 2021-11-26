@@ -11,11 +11,15 @@ namespace Comida
     class MainWindowVM : INotifyPropertyChanged
     {
         private ObservableCollection<Plato> platos;
+        private ObservableCollection<String> tipos;
 
         public MainWindowVM()
         {
-            platos = Plato.GetSamples(@"C:\Users\Juandi\Documents\VisualStudioProyectos\Tema 5\Comida\Comida\assets");
-            tipos = new string[] { "China", "Americana", "Mexicana" };
+            platos = Plato.GetSamples(@"C:\Users\alumno\Documents\VisualStudioProyectos\Tema 5\Comida\Comida\assets");
+            tipos = new ObservableCollection<string>()
+            {
+                "China", "Americana", "Mexicana"
+            };
         }
 
         public ObservableCollection<Plato> Platos
@@ -28,8 +32,8 @@ namespace Comida
             }
         }
 
-        private string[] tipos;
-        public string[] Tipos
+
+        public ObservableCollection<String> Tipos
         {
             get { return tipos; }
             set
@@ -48,6 +52,11 @@ namespace Comida
                 platoSeleccionado = value;
                 NotifyPropertyChanged("PlatoSeleccionado");
             }
+        }
+
+        public void DeseleccionarPlatos()
+        {
+            PlatoSeleccionado = null;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -100,7 +100,6 @@ namespace Comida
                 new Plato("Hot dogs", Path.Combine(rutaImagenes, @"hotdog.jpg"), "Americana", true, true, true, true),
                 new Plato("Fajitas", Path.Combine(rutaImagenes, @"fajitas.jpg"), "Mexicana", true, false, false, true)
             };
-
             return lista;
         }
 

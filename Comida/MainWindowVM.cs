@@ -15,7 +15,7 @@ namespace Comida
 
         public MainWindowVM()
         {
-            platos = Plato.GetSamples(@"C:\Users\alumno\Documents\VisualStudioProyectos\Tema 5\Comida\Comida\assets");
+            platos = Plato.GetSamples(@"C:\Users\Juandi\Documents\VisualStudioProyectos\Tema 5\Comida\Comida\assets");
             tipos = new ObservableCollection<string>()
             {
                 "China", "Americana", "Mexicana"
@@ -55,7 +55,6 @@ namespace Comida
         }
 
         public void DeseleccionarPlatos() => PlatoSeleccionado = null;
-        
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propertyName)
